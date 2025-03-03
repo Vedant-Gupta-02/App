@@ -1,0 +1,28 @@
+# Core dependencies
+streamlit==1.27.0
+firebase-admin==6.2.0
+Pillow==10.0.0
+
+# Map and location
+folium==0.14.0
+streamlit-folium==0.13.0
+geopy==2.3.0
+
+# Data handling
+pandas==2.0.3
+numpy==1.24.3
+
+# Image processing
+opencv-python-headless==4.8.0.76
+
+# Authentication helpers
+pycryptodome==3.18.0
+
+# Time handling
+pytz==2023.3
+
+# HTTP requests
+requests==2.31.0
+
+# Environment variables
+python-dotenv==1.0.0
