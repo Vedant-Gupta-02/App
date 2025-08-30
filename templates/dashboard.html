@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Your Groups</h2>
+<ul>
+    {% for group in groups %}
+    <li><a href="{{ url_for('group', group_id=group.id) }}">{{ group.name }}</a></li>
+    {% endfor %}
+</ul>
+<h3>Create Group</h3>
+<form method="post" action="{{ url_for('create_group') }}">
+    <div class="form-group">
+        <input type="text" name="name" class="form-control" placeholder="Group Name">
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+</form>
+{% endblock %}
