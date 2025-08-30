@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Settlement{% endblock %}
+{% block content %}
+<h2>Settlement Suggestions for {{ group.name }}</h2>
+<ul>
+    {% for s in settlements %}
+    <li>{{ s }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
