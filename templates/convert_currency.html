@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Convert Currency{% endblock %}
+{% block content %}
+<h2>Convert Balances for {{ group.name }}</h2>
+{% if balances %}
+<h3>Converted Balances in {{ target_currency }}</h3>
+<table class="table">
+    <thead>
+        <tr><th>User</th><th>Balance</th></tr>
+    </thead>
+    <tbody>
+        {% for user, balance in balances.items() %}
+        <tr><td>{{ user }}</td><td>{{ balance | round(2) }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<form method="post">
+    <div class="form-group">
+        <label>Target Currency</label>
+        <input type="text" name="target_currency" class="form-control" value="USD">
+    </div>
+    {% for currency in currencies %}
+    {% if currency != 'USD' %}  <!-- Assuming default is USD; adjust as needed -->
+    <div class="form-group">
+        <label>Exchange Rate for {{ currency }} to Target</label>
+        <input type="number" step="0.01" name="{{ currency }}_rate" class="form-control" value="1.0">
+    </div>
+    {% endif %}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Convert</button>
+</form>
+{% endif %}
+{% endblock %}
