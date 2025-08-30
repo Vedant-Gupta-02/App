@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}{{ group.name }}{% endblock %}
+{% block content %}
+<h2>{{ group.name }}</h2>
+<h3>Balances</h3>
+<table class="table">
+    <thead>
+        <tr><th>User</th><th>Balance</th></tr>
+    </thead>
+    <tbody>
+        {% for user, balance in balances.items() %}
+        <tr><td>{{ user }}</td><td>{{ balance | round(2) }}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Expenses</h3>
+<ul>
+    {% for expense in expenses %}
+    <li>{{ expense.description }}: {{ expense.amount }} {{ expense.currency }} paid by {{ expense.payer.username }}</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('add_expense', group_id=group.id) }}" class="btn btn-primary">Add Expense</a>
+<a href="{{ url_for('settlement', group_id=group.id) }}" class="btn btn-info">View Settlement</a>
+<a href="{{ url_for('export_csv', group_id=group.id) }}" class="btn btn-secondary">Export CSV</a>
+<a href="{{ url_for('share_link', group_id=group.id) }}" class="btn btn-secondary">Get Share Link</a>
+<a href="{{ url_for('convert_currency', group_id=group.id) }}" class="btn btn-warning">Convert Currency</a>
+<h3>Add Member</h3>
+<form method="post" action="{{ url_for('add_member', group_id=group.id) }}">
+    <div class="form-group">
+        <input type="text" name="username" class="form-control" placeholder="Username">
+    </div>
+    <button type="submit" class="btn btn-success">Add</button>
+</form>
+{% endblock %}
