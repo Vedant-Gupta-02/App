@@ -1,22 +1,16 @@
-App/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── redux/
-│   │   ├── utils/
-│   │   └── App.tsx
-│   ├── package.json
-│   └── tsconfig.json
-│
-├── backend/
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── server.js
-│   └── package.json
-│
-└── README.md
+expense-splitter/
+├── app.py                # Main Flask app
+├── models.py             # Database models
+├── templates/            # HTML templates
+│   ├── base.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── group.html
+│   ├── add_expense.html
+│   ├── settlement.html
+│   └── convert_currency.html
+├── static/               # CSS/JS
+│   └── styles.css
+├── requirements.txt      # Dependencies
+└── README.md             # This file
